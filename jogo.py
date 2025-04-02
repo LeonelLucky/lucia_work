@@ -1,11 +1,4 @@
-c1 = int(2)
-c2 = int(0)
-c3 = int(0)
-c4 = int(6)
-n1= str("_")
-n2= str("_")
-n3= str("_")
-n4= str("_")
+
 # tela de inicio
 
 print('Bem-Vindo ao Jogo SECRETO!!!')
@@ -16,25 +9,25 @@ print('A partir da 5a. tentativa o jogo irá te ajudar, dando dicas.')
 input('Tecle algo ')
 print('--------------------------------------------')
 
-
+#tentativa(mexi nos c's e n's)
 tentativa = int(input('Seu código é: '))
-
+c1 = tentativa//1000
+c2 = (tentativa%1000)//100
+c3 = (tentativa%100)//10
+c4 = (tentativa%10)
+n1= 2006//1000
+n2= (2006%1000)//100
+n3= (2006%100)//10
+n4= (2006%10)
 
 if (2006) == tentativa:
     print('PARABENS VOCÊ ACERTOU!!!')
 else:
+    for i in range (10):
+        if c1= n1:
+        print (f"{{c1} _ _ _")
+        elif c2=n2:
+    
     print('VOCÊ NÃO ACERTOU NADA NESSA TENTATIVA ...')
-    for i in range(10):
-        tentativa = int(input(f'{i + 1}ª tentativa'))
-        print (f'Seu código é {n1} {n2} {n3} {n4}')
-        
-        if c1==2:
-            n1=c1
-        if c2==0:
-            n2=c2
-        if c3==0:
-            n3=c3
-        if c4==6:
-            n4=c4
-        if (c1) and (c2) and (c3) and (c4) == tentativa:
+
             print('PARABENS VOCÊ ACERTOU!!!')
