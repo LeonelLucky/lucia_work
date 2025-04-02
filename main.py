@@ -10,12 +10,12 @@ input("<<< Tecle Algo >>>")
 print('-----------------------------')
 
 while tentativas < 10:
-    palpite = input("Digite seu palpite: ")  # primeiro palpite
+    palpite = int(input("Digite seu palpite: "))  # primeiro palpite
 
     # pra garantir que o usuario digite numeros inteiros ao inves de float e caracteres usei o palpite.isdigit() e pro usuario digitar 4 numeros usei o len(palpite), que conta os caracteres da variavel e se for diferente de 4 ele vai pedir a impressao correta
-    while not palpite.isdigit() or len(palpite) != 4:
+    while palpite != int or palpite < 1000 or palpite > 9999:
         print("Entrada inválida! Digite um número de 4 dígitos.")
-        palpite = input("Digite seu palpite: ")
+        palpite = int(input("Digite seu palpite: "))
 
     palpite = int(palpite)  
     tentativas += 1  
@@ -26,4 +26,11 @@ while tentativas < 10:
     else:
         print(f"Tentativa {tentativas}/10: Você digitou {palpite}. Tente novamente!")
 
-print("Fim do jogo!")  
+print("Fim do jogo!")
+
+a = numero_secreto[1]
+b = numero_secreto[2]
+c = numero_secreto[3]
+d = numero_secreto[4]
+print(a)
+
