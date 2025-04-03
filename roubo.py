@@ -4,29 +4,23 @@ n1= numero_secreto//1000
 n2= (numero_secreto%1000)//100
 n3= (numero_secreto%100)//10
 n4= (numero_secreto%10)
-<<<<<<< HEAD
+
 tentativas=0
 traco1= ("_")
 traco2= ("_")
 traco3= ("_")
 traco4= ("_")
-=======
-traco1= str ("_")
-traco2= str ("_")
-traco3= str ("_")
-traco4= str ("_")
 print (n1)
 print (n2)
 print (n3)
 print (n4)
->>>>>>> 4be354a2faefc03b096ce5e6880ab0987ea4b98c
+
 print(" => Bem-vindo Ao Jogo SECRETO!!! <=")
 print("Você tem 10 tentativas para acertar um numero entre [1000 e 9999].")
 print("A partir da 5a tentativas, o jogo irá te ajudar, dando dicas.")
 input("<<< Tecle Algo >>>")
 print('-----------------------------')
 
-<<<<<<< HEAD
 while tentativas<10:
     palpite = int(input("Digite seu palpite: "))  
     c1 = palpite//1000
