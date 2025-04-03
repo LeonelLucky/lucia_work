@@ -58,3 +58,4 @@ while lucia < 1:
         print(f"Você não acertou. O número secreto era {numero_secreto}.")
     if tentativa > 10 or palpite == numero_secreto:
         print("Fim do jogo!")
+lucia=int(input("Voce deseja jogar denovo ?(1/0)"))
