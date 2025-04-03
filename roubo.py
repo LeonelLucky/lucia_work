@@ -112,6 +112,6 @@ while lucia == 's':
         
     lucia=(input("Voce deseja jogar denovo ?(s/n)"))
     
-    if lucia != ('s') and lucia!= ('n'):
+    while lucia != ('s') and lucia!= ('n'):
         print ("A entrada digitada é invalida, porfavor digite (s/n)")
-        lucia=(input("Voce deseja jogar denovo ?(s/n)"))n)")
+        lucia=(input("Voce deseja jogar denovo ?(s/n)"))
