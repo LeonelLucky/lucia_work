@@ -24,6 +24,8 @@ else:
     print('VOCÊ NÃO ACERTOU NADA NESSA TENTATIVA ...')
     for i in range(10):
         tentativa = int(input(f'{i + 1}ª tentativa'))
+        print (f'Seu código é {n1} {n2} {n3} {n4}')
+        
         if c1==2:
             n1=c1
         if c2==0:
@@ -32,7 +34,7 @@ else:
             n3=c3
         if c4==6:
             n4=c4
-        if c1 and c2 and c3 and c4 == tentativa:
+        if (c1) and (c2) and (c3) and (c4) == tentativa:
             print('PARABENS VOCÊ ACERTOU!!!')
 
     
