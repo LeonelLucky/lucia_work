@@ -1,7 +1,7 @@
 import random
 
-lucia = '1'
-while lucia == '1':
+lucia = 1
+while lucia == 1:
     numero_secreto = random.randint(1000, 9999)
     n1 = numero_secreto // 1000
     n2 = (numero_secreto % 1000) // 100
@@ -102,10 +102,10 @@ while lucia == '1':
     if palpite != numero_secreto:
         print(f"Você não acertou. O número secreto era {numero_secreto}.")
 
-    lucia = input("Você deseja jogar novamente? (1/0) 1 = sim | 0 = nao ")
+    lucia = int(input("Você deseja jogar novamente? (1/0) 1 = sim | 0 = nao "))
     
-    while lucia != '1' and lucia != '0':
+    while lucia != 1 and lucia != 0:
         print("Entrada inválida! Digite '1' para sim ou '0' para não.")
-        lucia = input("Você deseja jogar novamente? (1/0): ")
+        lucia = int(input("Você deseja jogar novamente? (1/0): "))
 
 print("Obrigado por jogar! Até a próxima.")
