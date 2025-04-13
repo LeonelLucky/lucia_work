@@ -7,10 +7,10 @@ while lucia == 1:
     n3 = (numero_secreto % 100) // 10
     n4 = numero_secreto % 10
     
-    traco1 = "_"
-    traco2 = "_"
-    traco3 = "_"
-    traco4 = "_"
+    traco1 = -1
+    traco2 = -1
+    traco3 = -1
+    traco4 = -1
 
     print(" => Bem-vindo Ao Jogo SECRETO!!! <=")
     print("Você tem 10 tentativas para acertar um número entre [1000 e 9999].")
