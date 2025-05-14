@@ -8,8 +8,17 @@ menu = 1
 while menu == 1:
     
     print('----------------MENU----------------')
-    cadastrar_voos = input('Deseja cadastrar voos? Aperte 1!')
-    if cadastrar_voos == '1':
+    print("\n Escolha uma opção")
+    print("1. Cadastrar voos")
+    print("2. Cadastrar passageiro")
+    print("3. Consultar voos")
+    print("4. Alterar voos")
+    print("5. Sair")
+    opcao = int(input('Digite o numero da opção: '))
+
+
+
+    if opcao == (1):
         voos = int(input('\nDeseja cadastrar quantos voos? '))
     
         for i in range(voos):
@@ -26,20 +35,18 @@ while menu == 1:
             for numvoo, dados in dict_Voo.items():
                 print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
                            
-def cadastrar_passageiro():
-    cpf = input("Digite seu CPF: ")
-    if cpf in pes.keys():
-        print(f"\n\t\t=> CPF JÁ EXISTENTE<==\n")
-    else:
-        nome = input("Nome do passageiro: ")
-        telefone = input("Telefone do passageiro: ")
-        pes[cpf] = [nome, telefone]
-        armazem_passageiros.append(cpf)
-        print("Passageiro cadastrado com sucesso.")
-        print(pes)
-            
-cadastrar_passageiro()
-
+    if opcao == (2):
+        cpf = input("Digite seu CPF: ")
+        if cpf in pes.keys():
+            print(f"\n\t\t=> CPF JÁ EXISTENTE<==\n")
+        else:
+            nome = input("Nome do passageiro: ")
+            telefone = input("Telefone do passageiro: ")
+            pes[cpf] = [nome, telefone]
+            armazem_passageiros.append(cpf)
+            print("Passageiro cadastrado com sucesso.")
+            print(pes)
+        
 
 
     
