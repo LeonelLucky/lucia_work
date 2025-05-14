@@ -1,4 +1,3 @@
-
 dict_Voo = {}
 pes= {}
 armazem_voos= []
@@ -34,6 +33,7 @@ while menu == 1:
             armazem_voos.append(numVoo)
             for numvoo, dados in dict_Voo.items():
                 print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
+                print ("-"*80)
                            
     if opcao == (2):
         cpf = input("Digite seu CPF: ")
@@ -46,7 +46,13 @@ while menu == 1:
             armazem_passageiros.append(cpf)
             print("Passageiro cadastrado com sucesso.")
             print(pes)
-        
-
+    
+    if opcao == 3:
+        search_voo = int(input("\nDigite o número do voo desejado: "))
+        if search_voo in dict_Voo.keys():
+                dados_voo = dict_Voo[search_voo]
+                print(f"Voo {search_voo}: {dados_voo['origem']} para {dados_voo['destino']} | Escalas: {dados_voo['escalas']} | Preço: R${dados_voo['preço']:8.2f} | Lugares: {dados_voo['lugares disp']}")
+        else:
+            print(f"\n{search_voo} não consta no banco de dados")
 
     
