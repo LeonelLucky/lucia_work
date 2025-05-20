@@ -10,10 +10,18 @@ while menu == 1:
     print("2. Cadastrar passageiro")
     print("3. Consultar voos")
     print("4. Alterar voos")
+<<<<<<< HEAD
     print("5. Comprar Passagem")
     print("6. Sair")
     opcao = int(input('Digite o numero da opção: '))
 
+=======
+    print("5. Sair")
+    opcao = int(input('Digite o numero da opção: '))
+
+
+
+>>>>>>> f79382c8be99081b25d244142440d84d25189764
     if opcao == (1):
         voos = int(input('\nDeseja cadastrar quantos voos? '))
     
@@ -30,7 +38,10 @@ while menu == 1:
             for numvoo, dados in dict_Voo.items():
                 print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
                 print ("-"*80)
+<<<<<<< HEAD
                 print (dict_Voo.keys())
+=======
+>>>>>>> f79382c8be99081b25d244142440d84d25189764
                            
     if opcao == (2):
         cpf = input("Digite seu CPF: ")
@@ -40,6 +51,10 @@ while menu == 1:
             nome = input("Nome do passageiro: ")
             telefone = input("Telefone do passageiro: ")
             pes[cpf] = [nome, telefone]
+<<<<<<< HEAD
+=======
+            armazem_passageiros.append(cpf)
+>>>>>>> f79382c8be99081b25d244142440d84d25189764
             print("Passageiro cadastrado com sucesso.")
             print(pes)
     
@@ -47,6 +62,7 @@ while menu == 1:
         search_voo = int(input("\nDigite o número do voo desejado: "))
         if search_voo in dict_Voo.keys():
                 dados_voo = dict_Voo[search_voo]
+<<<<<<< HEAD
                 print (f"Voo {search_voo}: {dados_voo['origem']} para {dados_voo['destino']} | Escalas: {dados_voo['escalas']} | Preço: R${dados_voo['preço']:8.2f} | Lugares: {dados_voo['lugares disp']}")
         else:
             print(f"\n{search_voo} não consta no banco de dados")
@@ -79,3 +95,10 @@ while menu == 1:
                 while dados not in pes.kyes():
                     print("Cpf não foi encontrado no banco de dados")
                     dados=input("Digite seu cpf novamente: ")
+=======
+                print(f"Voo {search_voo}: {dados_voo['origem']} para {dados_voo['destino']} | Escalas: {dados_voo['escalas']} | Preço: R${dados_voo['preço']:8.2f} | Lugares: {dados_voo['lugares disp']}")
+        else:
+            print(f"\n{search_voo} não consta no banco de dados")
+
+    
+>>>>>>> f79382c8be99081b25d244142440d84d25189764
