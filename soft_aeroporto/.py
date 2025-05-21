@@ -1,69 +1,76 @@
-cdVoo = {}  # Dicionário de voos
-pes = {}    # Dicionário de passageiros
-armazem_voos = []          # Lista de voos cadastrados
-armazem_passageiros = []   # Lista de passageiros cadastrados
+dict_Voo = {}
+pes= {}
+armazem_voo= {}
+menu = 1
+while menu == 1:
+    
+    print('----------------MENU----------------')
+    print("\n Escolha uma opção")
+    print("1. Cadastrar voos")
+    print("2. Consultar voos")
+    print("3. Voo com menor escala")
+    print("4. Comprar Passagem")
+    print("5. Passageiros voo")
+    print("6.Cancelar passagem")
+    print("7. Sair")
+    opcao = int(input('\nDigite o numero da opção: '))
 
-def cadastrar_voos():
-    voos = int(input('\nDeseja cadastrar quantos voos? '))
-    for i in range(voos):
-        numVoo = int(input('\nDigite o número do voo: '))
-        cidadeorigem = input('Digite a cidade de origem: ')
-        cidadedestino = input('Digite a cidade de destino: ')
-        numescalas = int(input('Digite o número de escalas: '))
-        preco = float(input('Digite o preço da passagem: '))
-        lugares = int(input('Digite a quantidade de lugares disponíveis: '))
+    if opcao == 1:
+        voos = int(input('\nDeseja cadastrar quantos voos? '))
+    
+        for i in range(voos):
+            
+            numVoo = int(input('Digite o numero do voo: '))
+            cidadeorigem = input('Digite o nome da cidade de origem: ')
+            cidadedestino = input('Digite o nome da cidade de destino: ')
+            numescalas = int(input('Digite o numero de escalas: '))
+            preçopassagem = float(input('Digite o preço da passagem: '))
+            lugaresdisponiveis = int(input('Digite a quantidade de lugares disponiveis: '))
 
-        cdVoo[numVoo] = {
-            "origem": cidadeorigem,
-            "destino": cidadedestino,
-            "escalas": numescalas,
-            "preco": preco,
-            "lugares": lugares
-        }
+            dict_Voo[numVoo] =  {'origem': cidadeorigem,'destino': cidadedestino,'escalas': numescalas,'preço': preçopassagem,'lugares disp': lugaresdisponiveis}
+            for numvoo, dados in dict_Voo.items():
+                print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
+                print ("-"*80)
+                print (dict_Voo.keys())   
 
-        armazem_voos.append(numVoo)
-        print(f"Voo {numVoo} cadastrado com sucesso!")
-
-def cadastrar_passageiro():
-    cpf = input("\nDigite o CPF do passageiro: ")
-    if cpf in pes:
-        print("⚠️ CPF já cadastrado!")
-    else:
-        nome = input("Digite o nome do passageiro: ")
-        telefone = input("Digite o telefone do passageiro: ")
-        pes[cpf] = {"nome": nome, "telefone": telefone}
-        armazem_passageiros.append(cpf)
-        print("Passageiro cadastrado com sucesso!")
-
-def listar_voos():
-    if not cdVoo:
-        print("Nenhum voo cadastrado ainda.")
-        return
-    print("\n--- Voos Cadastrados ---")
-    for num, dados in cdVoo.items():
-        print(f"Voo {num}: {dados['origem']} -> {dados['destino']} | Escalas: {dados['escalas']} | "
-              f"Preço: R${dados['preco']} | Lugares: {dados['lugares']}")
-
-def menu():
-    while True:
-        print("\n========= MENU =========")
-        print("1. Cadastrar voos")
-        print("2. Cadastrar passageiro")
-        print("3. Listar voos")
-        print("4. Sair")
-        opcao = input("Escolha uma opção: ")
-
-        if opcao == "1":
-            cadastrar_voos()
-        elif opcao == "2":
-            cadastrar_passageiro()
-        elif opcao == "3":
-            listar_voos()
-        elif opcao == "4":
-            print("Encerrando o programa.")
-            break
+    if opcao == (2):
+        if dict_Voo == None:
+            print('\nNenhum voo cadastrado ainda!')
         else:
-            print("Opção inválida. Tente novamente.")
+            consultar = int(input('\nDigite o numero do voo ou a cidade origem ou a cidade destino: '))
+            if consultar in dict_Voo.keys():
+                print('\nInformações do voo:')
+                print(dict_Voo[consultar])
+            else:
+                print('\nVoo não cadastrado.')
+    
+    if opcao == 3:
+        menor_escala = None
+        maior_escala = None
+    
 
-# Executa o menu principal
-menu()
+    if opcao == 4:
+        
+        if dict_Voo == None:
+            print('\nNenhum voo cadastrado ainda!')
+        if dict_Voo['lugares disp'] == 0:
+            print('Sem voos com lugares disponiveis')
+        else:
+            print ("\nVoos Disponíveis")
+            print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
+            print ("-"*80)
+
+            voo_desejado= int(input("\nDigite o numero do voo desejado:"))       
+            if voo_desejado in dict_Voo.keys():
+                cpf = input("Digite seu CPF: ")
+                if cpf not in pes.keys(): 
+                    nome = input("Nome do passageiro: ")
+                    telefone = input("Telefone do passageiro: ")
+                    pes[cpf] = [nome, telefone]
+                    armazem_voo[voo_desejado]= {'pessoa':[nome], 'lugares':[lugaresdisponiveis-1]}
+                    print("Passageiro cadastrado com sucesso.")
+                    print(pes)
+                    print(armazem_voo)
+                else:
+                    cpf = armazem_voo[voo_desejado].update(armazem_voo)
+                    print(armazem_voo)
