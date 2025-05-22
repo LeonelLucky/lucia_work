@@ -39,21 +39,22 @@ while menu == 1:
         else:
             consultar = int(input('\nDigite o numero do voo ou a cidade origem ou a cidade destino: '))
             if consultar in dict_Voo.keys():
-                print('\nInformações do voo:')
-                print(dict_Voo[consultar])
+                for numvoo, dados in dict_Voo.items():
+                    print(f"Voo {numvoo}: {dados['origem']} para {dados['destino']} | Escalas: {dados['escalas']} | " f"Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
             else:
                 print('\nVoo não cadastrado.')
     
     if opcao == 3:
-        menor_escala = None
-        maior_escala = None
-    
+        menor_escala = numescalas
+        if numescalas > menor_escala:
+            menor_escala = numescalas
+            print (f"O voo com a menor escala se trata do voo número {dict_Voo[numVoo][menor_escala]}")
 
     if opcao == 4:
         
         if dict_Voo == None:
             print('\nNenhum voo cadastrado ainda!')
-        if dict_Voo['lugares disp'] == 0:
+        if dict_Voo['lugares disp'] >= 0:
             print('Sem voos com lugares disponiveis')
         else:
             print ("\nVoos Disponíveis")
@@ -70,6 +71,18 @@ while menu == 1:
                     armazem_voo[voo_desejado]= {'pessoa':[nome], 'lugares':[lugaresdisponiveis-1]}
                     print("Passageiro cadastrado com sucesso.")
                     print(pes)
+                    print(armazem_voo)
+                else:
+                    cpf = armazem_voo[voo_desejado].update(armazem_voo)
+                    print(armazem_voo)
+                    dict_Voo[voo_desejado][lugaresdisponiveis]=-1
+        if opcao == 5:
+            if dict_Voo == None:
+                print('\nNenhum voo cadastrado ainda!')
+            else:
+                pas_voo= int(input("Digite o numero do voo desejado: "))
+
+                
                     print(armazem_voo)
                 else:
                     cpf = armazem_voo[voo_desejado].update(armazem_voo)
