@@ -54,22 +54,18 @@ while menu == 1:
                     print('\nVoo não cadastrado.')
             if consultar == 2:
                 search_origem= input("Insira a cidade de origem que você deseja consultar:")
-                encontrado = False
                 for numvoo, dados in dict_Voo.items():
                     if dados['origem']== search_origem.lower().strip():
                         print(f"\nVoo {numvoo}: {dados['origem']} -> {dados['destino']} | Escalas: {dados['escalas']} | Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
-                        encontrado = True
-                if encontrado == False:
-                    print('\nVoo não cadastrado.')
+                    else:
+                        print('\nVoo não cadastrado.')
             if consultar == 3:
-                encontrado = False
                 search_destino=input("Insira a cidade destino que você deseja consultar:")
                 for numvoo, dados in dict_Voo.items():
                     if dados['destino']== search_destino.lower().strip():
                         print(f"Voo {numvoo}: {dados['origem']} -> {dados['destino']} | Escalas: {dados['escalas']} | Preço: R${dados['preço']:8.2f} | Lugares: {dados['lugares disp']}")
-                        encontrado = True
-                if encontrado == False:
-                    print('\nVoo não cadastrado.') 
+                    else:
+                        print('\nVoo não cadastrado.') 
                     
     if opcao == 3:
         if len(dict_Voo) == 0:
@@ -82,8 +78,8 @@ while menu == 1:
                 if menor_escala is None or dados['escalas'] < menor_escala:
                     menor_escala = dados['escalas']
                     voo_menor_escala = numvoo
-                else:
-                    print(f"\nO voo número {voo_menor_escala} tem o menor número de escalas")
+
+            print(f"\nO voo número {voo_menor_escala} tem o menor número de escalas, com {menor_escala} escala/as")
 
 
     if opcao == 4:     
@@ -100,11 +96,11 @@ while menu == 1:
                  
             if voo_desejado in dict_Voo.keys():
                 if voo_desejado in voo_disp:
-                    cpf = input("Digite seu CPF: ")
+                    cpf = int(input("Digite seu CPF: "))
                 
                     if cpf not in pes.keys(): 
                         nome = input("Nome do passageiro: ")
-                        telefone = input("Telefone do passageiro: ")
+                        telefone = int(input("Telefone do passageiro: "))
                         pes[cpf] = [nome, telefone]
                         
                         dict_Voo[voo_desejado]['lugares disp'] -= 1
@@ -112,7 +108,7 @@ while menu == 1:
                         print("Passageiro cadastrado com sucesso.")
 
                     else:
-                        nome = pes[cpf][0] #vai pegar o nome, usa isso pro estudo dps
+                        nome = pes[cpf][0] 
                         armazem_voo[voo_desejado] = {'pessoa': [nome], 'lugares': [dict_Voo[voo_desejado]['lugares disp'] -1]}
                         dict_Voo[voo_desejado]['lugares disp'] -= 1
                         print("Passageiro cadastrado com sucesso.")
@@ -138,7 +134,7 @@ while menu == 1:
             
             if ver_voo in armazem_voo.keys():
                 for num_voo, voo_dados in armazem_voo.items():
-                    print (f'Voo numero {ver_voo}, possui como passageiros as pessoas {voo_dados['pessoa']}, e possui {voo_dados['lugares']} lugares disponíveis')
+                    print (f"Voo numero {ver_voo}, possui como passageiros as pessoas {voo_dados['pessoa']}, e possui {voo_dados['lugares']} lugares disponíveis")
                 
             while ver_voo not in armazem_voo:
                 print("\nPor favor, digite um voo registrado")
@@ -148,19 +144,23 @@ while menu == 1:
        if len(dict_Voo) == 0:
             print('\nNenhum voo cadastrado ainda!')
        else:
-           cpf_cancel= (input('Digite seu cpf: ')).strip()
-           if cpf_cancel in armazem_voo:
+           cpf_cancel= int(input('Digite seu cpf: ')).strip()
+
+           if cpf_cancel in pes:
                nome_passageiro = pes[cpf_cancel][0]
                print(armazem_voo)
                voo_cancel=int(input('Digite o voo que você deseja cancelar: '))
                if voo_cancel in armazem_voo.keys() and nome_passageiro in armazem_voo[voo_cancel]:
-                   armazem_voo[voo_cancel].remove(nome_passageiro)
+                   armazem_voo[voo_cancel]['pessoa'].remove(nome_passageiro)
                    armazem_voo[voo_cancel][lugaresdisponiveis] +=1 
                    dict_Voo[voo_cancel]['lugares disp'] += 1
+
                    print(f'O voo de número {voo_cancel}, teve o passageiro de nome {nome_passageiro} removido')
-               while voo_cancel not in armazem_voo:
+
+               while voo_cancel not in armazem_voo or nome_passageiro not in armazem_voo[voo_cancel]['pessoa']:
                    print("\nDigite um voo válido")
                    voo_cancel=int(input('Digite o voo que você deseja cancelar: '))
+                
 
     if opcao == 7:
         print('\n')
@@ -168,3 +168,4 @@ while menu == 1:
         print('Obrigado por usar nossos serviços')
         print('-' *34)
         menu=0
+
